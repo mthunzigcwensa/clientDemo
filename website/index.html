@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Bonolo Investment Enterprise</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+
+    <script>
+        (function() {
+            emailjs.init("XjA3AFVXId-TO5d5p");
+        })();
+    </script>
+</head>
+<body>
+    <!-- Top Navigation Bar with Logo and Company Name -->
+    <div class="top-nav">
+        <div class="company-name">
+            <img src="https://cdn-icons-png.flaticon.com/512/3800/3800024.png" alt="Le Bonolo Logo" class="logo">
+            Le Bonolo
+        </div>
+        <ul>
+            <li><a href="#overview">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#vision-mission">Vision & Mission</a></li>
+            <li><a href="#values">Our Values</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <div class="overlay">
+            <h1>Le Bonolo Investment Enterprise</h1>
+            <p>"Bringing strategic solutions and talent augmentation across Africa."</p>
+            <br>
+            <a href="#services" class="cta-button">Discover Our Services</a>
+        </div>
+    </header>
+
+    <section id="overview">
+        <h2>Company Overview</h2>
+        <p>Le Bonolo Investment Enterprise specializes in delivering end-to-end project management solutions and resource augmentation across various industries.</p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-wrapper">
+            <button class="scroll-button left" onclick="scrollLeft()">&#10094;</button>
+            <div class="services-container">
+                <div class="service-card">
+                    <img src="https://images.pexels.com/photos/910299/pexels-photo-910299.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Resource Augmentation">
+                    <h3>Resource Augmentation</h3>
+                    <p>We provide skilled professionals for both short-term and long-term needs across multiple industries.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.pexels.com/photos/910299/pexels-photo-910299.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Project Management">
+                    <h3>Project Management</h3>
+                    <p>Comprehensive project management services from initiation to closure, tailored to achieve organizational objectives.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.pexels.com/photos/910299/pexels-photo-910299.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Mentoring and Coaching">
+                    <h3>Mentoring and Coaching</h3>
+                    <p>Preparing future leaders through tailored mentorship and coaching for professional growth.</p>
+                </div>
+                <div class="service-card">
+                    <img src="https://images.pexels.com/photos/910299/pexels-photo-910299.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Facilitation">
+                    <h3>Facilitation</h3>
+                    <p>Delivering impactful training and development programs for sustainable knowledge transfer.</p>
+                </div>
+            </div>
+            <button class="scroll-button right" onclick="scrollRight()">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="vision-mission">
+        <div class="vision">
+            <h2>Our Vision</h2>
+            <p>To be a catalyst for growth and innovation, empowering organizations, institutions, and industries for sustainable success.</p>
+        </div>
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>Delivering exceptional services and empowering the next generation of leaders through knowledge transfer and expertise.</p>
+        </div>
+    </section>
+
+    <section id="values">
+        <h2>Our Values</h2>
+        <ul>
+            <li><strong>Excellence:</strong> Committed to delivering high-quality solutions that exceed expectations.</li>
+            <li><strong>Integrity:</strong> Conducting business with ethics and transparency.</li>
+            <li><strong>Empowerment:</strong> Unlocking potential to create future leaders.</li>
+            <li><strong>Innovation:</strong> Approaching challenges with forward-thinking solutions.</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>For more information about our services, reach out to our team. We look forward to partnering with you to achieve success.</p>
+        <br>
+        <form id="contactForm" class="contact-form" onsubmit="sendEmail(event)">
+            <input type="text" id="user_name" placeholder="Name" required>
+            <br>
+            <input type="email" id="user_email" placeholder="Email" required>
+            <br>
+            <textarea id="user_message" placeholder="Message" required></textarea>
+            <br>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Le Bonolo Investment Enterprise. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function scrollLeft() {
+            document.querySelector('.services-container').scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+        }
+
+        function scrollRight() {
+            document.querySelector('.services-container').scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+        }
+
+        function sendEmail(event) {
+            event.preventDefault(); // Prevents the form from submitting the traditional way
+
+            // Collect user input
+            const user_name = document.getElementById("user_name").value;
+            const user_email = document.getElementById("user_email").value;
+            const user_message = document.getElementById("user_message").value;
+
+            // Send email using EmailJS
+            emailjs.send("service_aj3owhm", "template_pwckzz6", {
+                user_name: user_name,
+                user_email: user_email,
+                message: user_message
+            })
+            .then((response) => {
+                alert("Message sent successfully!");
+                document.getElementById("contactForm").reset(); // Clear the form after submission
+            }, (error) => {
+                alert("Failed to send message. Please try again later.");
+            });
+        }
+    </script>
+</body>
+</html>
